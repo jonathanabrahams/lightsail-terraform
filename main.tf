@@ -13,6 +13,18 @@ resource "aws_lightsail_instance" "instance" {
   availability_zone = data.aws_availability_zones.available.names[0]
   bundle_id         = "${var.bundle_size}_${var.bundle_by_region[data.aws_region.current.name]}"
   key_pair_name     = "${var.app}-ssh"
+
+  connection {
+    type        = "ssh"
+    host        = self.public_ip_address
+    user        = var.blueprint_users[var.blueprint_id]
+    timeout     = "20s"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo update-alternatives --install /usr/bin/python python $(which python3) 40"
+    ]
+  }
 }
 
 resource "aws_lightsail_static_ip_attachment" "app_ipv4" {
