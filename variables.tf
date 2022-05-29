@@ -7,6 +7,13 @@ variable "blueprint_id" {
   type    = string
   default = "debian_10"
 }
+
+variable "blueprint_users" {
+  type = map(string)
+  default = {
+    debian_10 = "admin"
+  }
+}
 variable "bundle_size" {
   type    = string
   default = "nano"

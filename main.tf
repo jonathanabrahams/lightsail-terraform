@@ -18,4 +18,14 @@ resource "aws_lightsail_instance" "instance" {
 resource "aws_lightsail_static_ip_attachment" "app_ipv4" {
   static_ip_name = aws_lightsail_static_ip.ipv4.id
   instance_name  = aws_lightsail_instance.instance.id
+  provisioner "local-exec" {
+    command = <<EOT
+    sleep 30; cd ./ansible;
+    >hosts;
+    echo "[app]" | tee -a hosts;
+    echo "${aws_lightsail_static_ip.ipv4.ip_address} ansible_user=${var.blueprint_users[var.blueprint_id]}" | tee -a hosts;
+    export ANSIBLE_HOST_KEY_CHECKING=False;
+    ansible-playbook upgrade-os.yaml -i hosts
+    EOT
+  }
 }

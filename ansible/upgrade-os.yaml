@@ -1,0 +1,6 @@
+---
+- name: Upgrade Debian
+  hosts: app
+  become: true
+
+  tasks:

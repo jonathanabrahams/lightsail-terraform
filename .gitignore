@@ -2,3 +2,4 @@
 .terraform.lock.hcl
 *.log
 terraform.tfstate
+terraform.tfstate.backup
