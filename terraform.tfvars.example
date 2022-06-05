@@ -1,0 +1,4 @@
+api_backend_region = "eu-north-1"
+api_backend_zone   = "eu-north-1a"
+api_backend_size   = "nano"
+api_backend_os     = "debian_10"
