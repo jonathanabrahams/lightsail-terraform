@@ -1,27 +1,20 @@
 variable "instance_name" {
   type    = string
-  default = "api-backend"
 }
-
 variable "availability_zone" {
   type = string
 }
-
 variable "blueprint_id" {
   type = string
 }
-
 variable "bundle_size" {
   type = string
 }
-
 variable "region" {
   type = string
 }
-
 variable "bundle_by_region" {
   type = map(string)
-
   default = {
     us-east-1      = "2_0"
     us-east-2      = "2_0"

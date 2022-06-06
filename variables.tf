@@ -1,3 +1,6 @@
+variable "api_backend_name" {
+  type = string
+}
 variable "api_backend_region" {
   type = string
 }

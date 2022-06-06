@@ -1,3 +1,4 @@
+api_backend_name   = "api-backend"
 api_backend_region = "eu-north-1"
 api_backend_zone   = "eu-north-1a"
 api_backend_size   = "nano"
